@@ -47,25 +47,16 @@ function regresion(data) {
 }
 
 function point(X,pos) {
-  var datapoint = [];
-  X.forEach(function(varX) {
-    datapoint.push(varX[pos])
-  });
-  return datapoint;
+  return X.reduce(function(XatPos,currX){
+    XatPos.push(currX[pos]);
+    return XatPos;
+  },[]);
 }
 
 function sumprod(a,b){
   return a.reduce(function(sum,x,i) {
     return sum + x*b[i];
   },0);
-  
-  /* ORIGINAL VERSION
-    var sum = 0;
-    a.forEach(function(x,i) {
-      sum += x*b[i];
-    });
-    return sum;
-  */
 }
 
 function gauss(A) {
@@ -96,6 +87,6 @@ function gauss(A) {
 
 //console.log(sumprod([0,1,2,3,6,2],[5,10,9,0,3,27]));
 //var reg1 = regresion([[0,2,2.5,1,4,7],[0,1,2,3,6,2],[5,10,9,0,3,27]]);
-//var reg2 = regresion([[0,0,1,2,0,1,2,2,1],[0,2,2,4,4,6,6,2,1],[14,21,11,12,23,23,14,6,11]])
-//console.log(reg2);
+var reg2 = regresion([[0,0,1,2,0,1,2,2,1],[0,2,2,4,4,6,6,2,1],[14,21,11,12,23,23,14,6,11]])
+console.log(reg2);
   
