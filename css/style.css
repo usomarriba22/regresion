@@ -6,6 +6,9 @@ body {
 
 div.controles {
   width: 400px;
+  display: inline-block;
+  padding-right: 20px;
+  margin-right: 20px;
 }
 
 .controles input {
@@ -24,8 +27,12 @@ div.controles {
   padding: 2px 0;
 }
 
+h1 {
+  margin-bottom: 5px;
+}
 .row {
   margin-bottom: 5px;
   height: 30px;
+  width: 100%;
   line-height: 1.5em;
 }
