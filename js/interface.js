@@ -1,6 +1,7 @@
-var order=2, n=5;
+var order=2, n=6;
 
 crearTabla(n,order+1);
+//loadSample();
 
 function crearTabla(rows, cols) {
   // modificar esta funcion para que aparezcan encabezados  de columna X1, X2, X3...Y
@@ -34,6 +35,16 @@ document.querySelector("#n").addEventListener("input", function(e) {
   crearTabla(n,order+1);
 });
 
+/*
+function loadSample(sample) {
+  var elementos = document.querySelectorAll("table input");
+  
+  for (var i=0; i < elementos.length; i++) {
+    elementos[i].value = +i;
+  }
+}
+*/
+
 document.querySelector("button").addEventListener("click", function() {
   var data = [];
   
@@ -45,9 +56,15 @@ document.querySelector("button").addEventListener("click", function() {
       data.push([]);
       data[i].push(v);
     }
-    else {
+    else
       data[i%(order+1)].push(v);
-    }
   }
+
   var reg = regresion(data);
+  
+  var results = document.querySelector("#results");
+  var txt = "<h1>Resultados</h1><p>Coeficientes: " + reg[0] + "</p>";
+  txt += "<p>Error estándar " + reg[1] + "</p>";
+  txt += "<p>R cuadrado " + reg[2] + "</p>";
+  results.innerHTML = txt;
 });
