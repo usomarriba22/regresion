@@ -75,8 +75,18 @@ document.querySelector("button").addEventListener("click", function() {
   var reg = regresion(data);
   
   var results = document.querySelector("#results");
-  var txt = "<h1>Resultados</h1><p>Coeficientes: " + reg[0] + "</p>";
-  txt += "<p>Error estándar " + reg[1] + "</p>";
-  txt += "<p>R cuadrado " + reg[2] + "</p>";
+  var txt = "<h1>Resultados</h1><p>Ecuación: " + equation(reg[0]) + "</p>";
+  txt += "<p>Error estándar: " + reg[1].toFixed(3) + "</p>";
+  txt += "<p>R cuadrado: " + reg[2].toFixed(3) + "</p>";
   results.innerHTML = txt;
 });
+
+function equation(coefs) {
+  return coefs.reduce(function(str,coef,i) {
+    str += (coef > 0 ? "+ ":"") + coef.toFixed(3) + " ";
+    if (i>0) str += "X<sub>" + i + "</sub> ";
+    return str;
+  },"")
+}
+
+console.log(equation([3,-4,-5,6]));
