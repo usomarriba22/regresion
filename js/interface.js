@@ -1,7 +1,7 @@
 var order=2, n=6;
 
-crearTabla(n,order+1);
-//loadSample();
+//crearTabla(n,order+1);
+loadSample([[0,0,1,2,0,1,2,2,1],[0,2,2,4,4,6,6,2,1],[14,21,11,12,23,23,14,6,11]]);
 
 function crearTabla(rows, cols) {
   var esp = document.querySelector(".datainput");
@@ -44,15 +44,18 @@ document.querySelector("#n").addEventListener("input", function(e) {
   crearTabla(n,order+1);
 });
 
-/*
+
 function loadSample(sample) {
+  var cols = sample.length;
+  var rows = sample[0].length;
+  crearTabla(rows,cols);
+  
   var elementos = document.querySelectorAll("table input");
   
-  for (var i=0; i < elementos.length; i++) {
-    elementos[i].value = +i;
-  }
+  for (var i=0; i<cols; i++)
+    for (var j=0; j<rows; j++)
+      elementos[i+cols*j].value = sample[i][j];
 }
-*/
 
 document.querySelector("button").addEventListener("click", function() {
   var data = [];
