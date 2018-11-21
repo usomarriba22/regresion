@@ -4,18 +4,27 @@ crearTabla(n,order+1);
 //loadSample();
 
 function crearTabla(rows, cols) {
-  // modificar esta funcion para que aparezcan encabezados  de columna X1, X2, X3...Y
-  // y de fila 1, 2, 3, ... n
   var esp = document.querySelector(".datainput");
   if (esp.firstChild) esp.removeChild(esp.firstChild);
 
   var tabla = document.createElement("table");
 
-  for (var i = 0; i < rows; i++) {
+  for (var i = 0; i <= rows; i++) {
     var fila = document.createElement("tr");
-    for (var j = 0; j < cols; j++) {
+    for (var j = 0; j <= cols; j++) {
       var celda = document.createElement("td");
-      var entrada = document.createElement("input");
+      var entrada;
+      if (i==0) {
+        if (j>0)
+          entrada = document.createTextNode(j==cols ? "Y":"X" + j);
+        else
+          entrada = document.createTextNode("");
+      }
+      else
+        if (j==0)
+          entrada = document.createTextNode(i)
+        else
+          entrada = document.createElement("input");
       celda.append(entrada);
       fila.append(celda);
     }
