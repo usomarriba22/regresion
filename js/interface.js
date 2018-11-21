@@ -1,6 +1,5 @@
-var order=2, n=6;
+var order=2, n=9;
 
-//crearTabla(n,order+1);
 loadSample([[0,0,1,2,0,1,2,2,1],[0,2,2,4,4,6,6,2,1],[14,21,11,12,23,23,14,6,11]]);
 
 function crearTabla(rows, cols) {
@@ -13,19 +12,12 @@ function crearTabla(rows, cols) {
     var fila = document.createElement("tr");
     for (var j = 0; j <= cols; j++) {
       var celda = document.createElement("td");
-      var entrada;
       if (i==0) {
         if (j>0)
-          entrada = document.createTextNode(j==cols ? "Y":"X" + j);
-        else
-          entrada = document.createTextNode("");
+          celda.innerHTML = (j==cols ? "Y":"X<sub>" + j +"</sub>");
       }
       else
-        if (j==0)
-          entrada = document.createTextNode(i)
-        else
-          entrada = document.createElement("input");
-      celda.append(entrada);
+        celda.innerHTML = (j==0 ? "<sub>" + i + "</sub>": "<input>");
       fila.append(celda);
     }
     tabla.append(fila);
@@ -75,18 +67,16 @@ document.querySelector("button").addEventListener("click", function() {
   var reg = regresion(data);
   
   var results = document.querySelector("#results");
-  var txt = "<h1>Resultados</h1><p>Ecuación: " + equation(reg[0]) + "</p>";
-  txt += "<p>Error estándar: " + reg[1].toFixed(3) + "</p>";
-  txt += "<p>R cuadrado: " + reg[2].toFixed(3) + "</p>";
+  var txt = "<h1>Resultados</h1>Ecuación: " + equation(reg[0]) + "<br>";
+  txt += "Error estándar: " + reg[1].toFixed(3) + "<br>";
+  txt += "R cuadrado: " + reg[2].toFixed(3);
   results.innerHTML = txt;
 });
 
 function equation(coefs) {
   return coefs.reduce(function(str,coef,i) {
-    str += (coef > 0 ? "+ ":"") + coef.toFixed(3) + " ";
+    str += (coef > 0 ? "+ ":"- ") + Math.abs(coef.toFixed(3)) + " ";
     if (i>0) str += "X<sub>" + i + "</sub> ";
     return str;
   },"")
 }
-
-console.log(equation([3,-4,-5,6]));

@@ -21,6 +21,10 @@ div.controles {
   font-size: 120%;
 }
 
+td {
+  text-align: center;
+}
+
 .datainput input {
   width: 40px;
   text-align: center;
