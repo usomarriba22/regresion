@@ -2,7 +2,7 @@ var order=2, n=9;
 
 loadSample([[0,0,1,2,0,1,2,2,1],[0,2,2,4,4,6,6,2,1],[14,21,11,12,23,23,14,6,11]]);
 
-function crearTabla(rows, cols) {
+function crearTabla(rows, cols) {//FUNCION PARA CREAR TABLA 
   var esp = document.querySelector(".datainput");
   if (esp.firstChild) esp.removeChild(esp.firstChild);
 
@@ -37,7 +37,7 @@ document.querySelector("#n").addEventListener("input", function(e) {
 });
 
 
-function loadSample(sample) {
+function loadSample(sample) {// Funcion para  cargar los datos
   var cols = sample.length;
   var rows = sample[0].length;
   crearTabla(rows,cols);
